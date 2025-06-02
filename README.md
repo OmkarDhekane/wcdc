@@ -14,11 +14,11 @@ This project presents a deep learning-based approach to detect multiple wheat le
 
 ## 🗂️ Project Structure
 wheat-disease-detection/
-- models/ # Trained model weights
-- notebooks/ # Jupyter notebooks for EDA and experiments
-- results/ # Evaluation metrics, predictions, visualizations
-- requirements.txt # Dependency list
-- README.md # Project documentation
+- models/ : Trained model weights. Model card can be found here [https://www.kaggle.com/models/omkardhekane/wcdc_models]
+- notebooks/ : Jupyter notebooks for EDA and experiments
+- results/ : Evaluation metrics, predictions, visualizations
+- requirements.txt : Dependency list
+- README.md : Project documentation
 
 ---
 The Data is hosted on my Kaggle account.
