@@ -1,22 +1,14 @@
-# Base image
-FROM python:3.10-slim
+FROM python:3.10-slim-bookworm
 
-# Set environment variables to avoid Python buffering issues
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-
-# Set working directory
 WORKDIR /app
 
-# Install dependencies
 COPY requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# Copy all project files
+RUN apt-get update && apt-get upgrade -y && apt-get clean && \
+	pip install --upgrade pip && pip install -r requirements.txt
+
 COPY . .
 
-# Expose port
 EXPOSE 8501
 
-# Run the Streamlit app
-CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD ["streamlit", "run", "app.py", "--server.port=7860", "--server.address=0.0.0.0", "--server.allow-websocket-origin=OmkarDhekane-wheatCropClassifier.hf.space"]
