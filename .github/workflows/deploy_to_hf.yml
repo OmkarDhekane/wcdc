@@ -17,4 +17,4 @@ jobs:
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN_WCDC }}
-        run: git push https://OmkarDhekane:$HF_TOKEN@huggingface.co/spaces/OmkarDhekane/wheatCropClassifier main
+        run: git push --force https://OmkarDhekane:$HF_TOKEN@huggingface.co/spaces/OmkarDhekane/wheatCropClassifier main
