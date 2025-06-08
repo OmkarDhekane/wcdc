@@ -7,6 +7,10 @@ import pandas as pd
 import warnings
 import absl.logging
 from utils_gradcam import make_gradcam_heatmap, overlay_heatmap
+from dotenv import load_dotenv
+load_dotenv()
+import traceback
+from huggingface_hub import hf_hub_download
 
 # Suppress logs
 warnings.filterwarnings('ignore')
@@ -14,33 +18,42 @@ absl.logging.set_verbosity(absl.logging.ERROR)
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 # ==== CONFIG ====
+# MODEL_NAME = "aug_alb_best_model_DenseNet121_FT.h5"
+# MODEL_PATH =  os.path.join("best_model", MODEL_NAME)
+
 MODEL_NAME = "aug_alb_best_model_DenseNet121_FT.h5"
-MODEL_PATH =  os.path.join("best_model", MODEL_NAME)
+HF_MODEL_REPO = 'OmkarDhekane/wcdc_densenet121_AUGFT'
+TOKEN = os.getenv("HF_TOKEN")
+
+
 LABELS = ["healthy", "leaf_rust", "powdery_mildew", "seedlings", "septoria", "stem_rust", "yellow_rust"]
 IMG_SIZE = (240, 240)
 THRESHOLD = 0.5
 LAST_CONV_LAYER = "conv5_block16_2_conv"  # For DenseNet121
 
 
-# st.markdown(
-#     """
-#     <style>
-#     .st-emotion-cache-13k62yr {
-#         background-color: #F5DEB3;
-#     }
-#     </style>
-#     """,
-#     unsafe_allow_html=True
-# )
-
-
-
 # ==== LOAD MODEL ====
 @st.cache_resource
-def load_model():
-    return tf.keras.models.load_model(MODEL_PATH)
+def load_model(HF_MODEL_REPO,MODEL_NAME,TOKEN):
+    try:
+        print(f"Attempting to download {MODEL_NAME} from {HF_MODEL_REPO}...")
+        h5_model_path = hf_hub_download(repo_id=HF_MODEL_REPO, 
+                                        filename=MODEL_NAME, 
+                                        token=TOKEN)
+        
+        model = tf.keras.models.load_model(h5_model_path, compile=False)
+        return model
+    
+    except Exception as e:
+        st.error(f"🚫 Failed to load model: {e}")
+        st.code(traceback.format_exc())
+        return None
+        
+model = load_model(HF_MODEL_REPO, MODEL_NAME, TOKEN)
+print("Model loaded successfully!")
 
-model = load_model()
+
+model = load_model(HF_MODEL_REPO,MODEL_NAME,TOKEN)
 
 
 
