@@ -1,38 +1,49 @@
 # 🌾 Wheat Crop Disease Classification (Multi-Label Classification)
 
-This project presents a deep learning-based approach to detect multiple wheat leaf diseases from images. It uses a multi-label classification pipeline that identifies one or more diseases — or a healthy label — in a single image.
+This project presents a deep learning-based approach to detect multiple wheat leaf diseases from images. It uses a *multi-label* classification pipeline that identifies one or more diseases or a healthy label in a single image. Additionally, it provides insights model explainability with grad-CAM.
+
+View project demo here: [Demo Link](https://huggingface.co/spaces/OmkarDhekane/wheatCropClassifier)<br>
+All trained models used during the experiments can be found here: [Model Link](https://www.kaggle.com/models/omkardhekane/wcdc_trial)<br>
+The Data is hosted on my Kaggle account here: [Data Link](https://www.kaggle.com/datasets/omkardhekane/my-seminar-dataset)<br>
 
 ## 📌 Overview
 
 - **Type**: Multi-label Image Classification  
-- **Model**: EfficientNetB1 (Transfer Learning)  
-- **Dataset Size**: 2,414 images  
+- **Model**: DenseNet121, VGG19, EfficientNetB1, MobileNetV2, InceptionV3
+- **Dataset Size**: 2,414 (original) + 675(augmented) ~3K images 
 - **Classes**: 6 Diseases + 1 Healthy  
-- **Goal**: Robust and accurate detection of crop diseases to assist early intervention
-
+- **Goal**: Robust and accurate classifier of crop diseases to assist early intervention.
+- **Best Model**: DenseNet121
+- **Best Strategy**: Data Expansion + Augmentation + Finetuning
+- **Results**: See *results.csv* file
 ---
-
-## 🗂️ Project Structure
-wheat-disease-detection/
-- models/ : Trained model weights. Model card can be found here [https://www.kaggle.com/models/omkardhekane/wcdc_models]
-- notebooks/ : Jupyter notebooks for EDA and experiments
-- results/ : Evaluation metrics, predictions, visualizations
-- requirements.txt : Dependency list
-- README.md : Project documentation
-
----
-The Data is hosted on my Kaggle account.
 
 
 ## 🛠️ Setup and Usage
 
 ### 🔧 1. Clone and Install
 ```bash
-git clone https://github.com/OmkarDhekane/wcdc.git
-cd wcdc
+git clone https://github.com/OmkarDhekane/wcdc.git && cd wcdc
+```
+
+Create virtual enviornment:
+```bash
+conda create -n wheat-app python=3.11 -y
+conda activate wheat-app
+```
+Install required dependencies:
+```bash
 pip install -r requirements.txt
 ```
+
+If you want to run the application locally, run the command
+```bash
+streamlit run app.py
+```
+
 ### 🔍 2. Run Notebook 
+
+optionally, you can also run the `.ipynb` file to run the experiments.
 
 ---
 
@@ -42,5 +53,3 @@ Author: Omkar Dhekane <br>
 
 
 💡 Early disease detection can help save yields, reduce pesticide use, and promote sustainable agriculture.
-
-Let me know if you want a minimal version for Kaggle or an extended one for portfolio/blog posts.
