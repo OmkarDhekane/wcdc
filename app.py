@@ -15,7 +15,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 # ==== CONFIG ====
 MODEL_NAME = "aug_alb_best_model_DenseNet121_FT.h5"
-MODEL_PATH =  MODEL_NAME  #os.path.join("Models", MODEL_NAME)
+MODEL_PATH =  os.path.join("best_model", MODEL_NAME)
 LABELS = ["healthy", "leaf_rust", "powdery_mildew", "seedlings", "septoria", "stem_rust", "yellow_rust"]
 IMG_SIZE = (240, 240)
 THRESHOLD = 0.5
