@@ -17,7 +17,13 @@ _Note that, since data is private, its stored on kaggle private repo. To access 
 - **Best Model**: DenseNet121
 - **Best Strategy**: Data Expansion + Augmentation + Finetuning
 - **Results**: See *results.csv* file
+- **Model Architecture**:
+<img width="798" height="462" alt="image" src="https://github.com/user-attachments/assets/f152a12e-d8ae-4bd5-ae0c-c2229b652d58" />
+
+ 
 ---
+
+
 
 
 ## 🛠️ Setup and Usage
