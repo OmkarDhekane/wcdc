@@ -5,6 +5,7 @@ This project presents a deep learning-based approach to detect multiple wheat le
 View project demo here: [Demo Link](https://huggingface.co/spaces/OmkarDhekane/wheatCropClassifier)<br>
 All trained models used during the experiments can be found here: [Model Link](https://www.kaggle.com/models/omkardhekane/wcdc_trial)<br>
 The Data is hosted on my Kaggle account here: [Data Link](https://www.kaggle.com/datasets/omkardhekane/my-seminar-dataset)<br>
+_Note that, since data is private, its stored on kaggle private repo. To access it, you may need to send a request. please send me a email to request data preview._
 
 ## 📌 Overview
 
